@@ -1,6 +1,7 @@
 package edu.sla;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -129,6 +131,7 @@ public class MyFirstJavaFXProgram extends Application {
 
         TextField textField = new TextField();
         Label label = new Label();
+        Label label2 = new Label();
 
         Button buttontext = new Button("Click to get text");
         buttontext.setOnAction(action -> {
@@ -138,14 +141,32 @@ public class MyFirstJavaFXProgram extends Application {
 
         DatePicker datePicker = new DatePicker();
 
-        LocalDate value = datePicker.getValue();
+        Button button2 = new Button("Read Date");
+
+        button.setOnAction(actionEvent -> {
+            LocalDate value = datePicker.getValue();
+        });
+
 
         ListView listView = new ListView();
 
+
         listView.getItems().add(label);
+        listView.getItems().add(datePicker);
+        listView.getItems().add(label2);
+
+
+        Button clearbutton = new Button("Clear");
+        clearbutton.setOnAction(actionEvent -> {
+            label.setText(" ");
+        });
+
+        listView.getItems().add(clearbutton);
+
+
+
         // create layout
         HBox myLayout = new HBox(menuButton, radioButton1, radioButton2, button, textField, buttontext, label, datePicker, listView);
-
 
         // create Scene
         Scene myScene = new Scene( myLayout);
